@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gerador de Orçamentos</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Gerador de Orçamentos</h1>
+    
+    <section>
+  <h2>Dados do emissor</h2>
+  <input id="emissor-nome" placeholder="Nome">
+  <input id="emissor-cpf" placeholder="CPF / CNPJ">
+  <textarea id="emissor-endereco" placeholder="Endereço completo"></textarea>
+  <input id="emissor-telefone" placeholder="Telefone">
+  <input id="emissor-email" placeholder="Email">
+</section>
+
+    <section>
+      <h2>Dados do cliente</h2>
+      <input id="cliente-nome" placeholder="Nome">
+      <input id="cliente-cpf" placeholder="CPF / CNPJ">
+      <textarea id="cliente-endereco" placeholder="Endereço completo"></textarea>
+      <input id="cliente-telefone" placeholder="Telefone">
+    </section>
+
+    <section>
+      <h2>Itens do orçamento</h2>
+      <div id="itens-container">
+        <div class="item-linha">
+          <input placeholder="Produto / serviço">
+          <input placeholder="Qtd">
+          <input placeholder="Valor unitário (R$)">
+        </div>
+      </div>
+      <button onclick="adicionarItem()">+ adicionar item</button>
+    </section>
+
+    <section>
+      <h2>Dados do orçamento</h2>
+      <input id="orc-numero" placeholder="Número do orçamento">
+      <input id="orc-data" placeholder="Data">
+      <input id="orc-valido" placeholder="Valido até">
+      <input id="orc-acrescimo" placeholder="Acréscimo (R$)">
+      <input id="orc-desconto" placeholder="Desconto (R$)">
+      <input id="orc-pagamento" placeholder="Forma de pagamento">
+      <textarea id="orc-observacoes" placeholder="Observações"></textarea>
+    </section>
+
+    <button id="gerar-btn">📄 Gerar orçamento</button>
+  </div>
+
+  <script>
+    function adicionarItem() {
+      const container = document.getElementById("itens-container");
+      const div = document.createElement("div");
+      div.classList.add("item-linha");
+      div.innerHTML = `
+        <input placeholder="Produto / serviço">
+        <input placeholder="Qtd">
+        <input placeholder="Valor unitário (R$)">
+      `;
+      container.appendChild(div);
+    }
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+  <script src="pdf.js"></script>
+</body>
+</html>
